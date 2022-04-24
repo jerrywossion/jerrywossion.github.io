@@ -1,0 +1,20 @@
+{{ define "main" }}
+<article class="markdown post-detail">
+  <h1 class="title">
+    <a href="{{ .RelPermalink }}">{{ partial "docs/title.html" . }}</a>
+  </h1>
+  {{- .Content -}}
+  {{ partial "docs/post-meta" . }}
+</article>
+<script src="https://utteranc.es/client.js"
+        repo="jerrywossion/westwindrest_comments"
+        issue-term="title"
+        theme="preferred-color-scheme"
+        crossorigin="anonymous"
+        async>
+</script>
+{{ end }}
+
+{{ define "toc" }}
+  {{ partial "docs/toc" . }}
+{{ end }}

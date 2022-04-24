@@ -1,0 +1,17 @@
+baseURL = 'http://mnt.ink/'
+languageCode = 'zh-cn'
+title = '西風之眠'
+theme = 'simple'
+enableGitInfo = true
+[frontmatter]
+date = ["date", "publishDate", "lastmod"]
+lastmod = ["lastmod", ":git", "date", "publishDate"]
+[markup]
+  [markup.goldmark.renderer]
+    unsafe= true
+  [markup.highlight]
+    noClasses = false
+    tabWidth = 4
+[params]
+    BookTheme = 'auto'
+    BookDateFormat = '2006年1月2日'
