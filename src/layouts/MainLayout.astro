@@ -55,8 +55,8 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
       </div>
     </aside>
 
-    <div class="p-4 sm:ml-64">
-      <main class="container mx-auto"><slot /></main>
+    <div class="p-4 sm:ml-64 min-h-screen flex flex-col">
+      <main class="mx-auto flex-1"><slot /></main>
       <Footer />
     </div>
   </body>
