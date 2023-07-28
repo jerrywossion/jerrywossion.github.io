@@ -9,4 +9,7 @@ export default defineConfig({
     site: 'https://jerrywossion.github.io',
     base: '/',
     integrations: [mdx(), sitemap(), tailwind()],
+    experimental: {
+      assets: true
+     }
 })
