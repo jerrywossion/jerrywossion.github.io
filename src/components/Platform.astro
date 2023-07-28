@@ -1,0 +1,11 @@
+---
+const { name, iconSrc, url, class: className } = Astro.props
+---
+
+<a
+    class:list={[className, 'w-9 h-9 p-2 hover:bg-white/[.2] rounded-full']}
+    href={url}
+    target="_blank"
+>
+    <img src={iconSrc} alt={name} />
+</a>
