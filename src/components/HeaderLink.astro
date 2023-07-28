@@ -1,30 +1,30 @@
 ---
-import type { HTMLAttributes } from "astro/types";
+import type { HTMLAttributes } from 'astro/types'
 
-type Props = HTMLAttributes<"a">;
+type Props = HTMLAttributes<'a'>
 
-const { href, class: classNameProp, ...props } = Astro.props;
+const { href, class: classNameProp, ...props } = Astro.props
 
-const { pathname } = Astro.url;
-const isActive = href === pathname || href === pathname.replace(/\/$/, "");
+const { pathname } = Astro.url
+const isActive = href === pathname || href === pathname.replace(/\/$/, '')
 
-let className = "";
+let className = ''
 if (classNameProp) {
-  className += classNameProp;
+    className += classNameProp
 }
-className += ` flex items-center p-2 rounded-lg border text-gray-900 dark:text-white border group`;
+className += ` flex items-center p-2 rounded-lg border text-gray-900 dark:text-white border group`
 className += ` ${
-  isActive
-    ? "bg-white/[.4] dark:bg-black/[.2]"
-    : "hover:bg-white/[.3] dark:hover:bg-black/[.1]"
-}`;
+    isActive
+        ? 'bg-white/[.4] dark:bg-black/[.2]'
+        : 'hover:bg-white/[.3] dark:hover:bg-black/[.1]'
+}`
 className += ` border-transparent ${
-  isActive ? "border-white/[.2]" : "hover:border-white/[.1]"
-}`;
+    isActive ? 'border-white/[.2]' : 'hover:border-white/[.1]'
+}`
 ---
 
 <li>
-  <a href={href} class:list={[className, { active: isActive }]} {...props}>
-    <span class="flex-1 ml-3 whitespace-nowrap"><slot /></span>
-  </a>
+    <a href={href} class:list={[className, { active: isActive }]} {...props}>
+        <span class="flex-1 ml-3 whitespace-nowrap"><slot /></span>
+    </a>
 </li>

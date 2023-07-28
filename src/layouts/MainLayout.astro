@@ -1,63 +1,152 @@
 ---
-import BaseHead from "../components/BaseHead.astro";
-import HeaderLink from "../components/HeaderLink.astro";
-import Footer from "../components/Footer.astro";
-import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+import BaseHead from '../components/BaseHead.astro'
+import HeaderLink from '../components/HeaderLink.astro'
+import Footer from '../components/Footer.astro'
+import { SITE_TITLE, SITE_DESCRIPTION } from '../consts'
 ---
 
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-    <style></style>
-  </head>
-  <body class="p-0 m-0">
-    <button
-      data-drawer-target="default-sidebar"
-      data-drawer-toggle="default-sidebar"
-      aria-controls="default-sidebar"
-      type="button"
-      class="inline-flex items-center p-2 mt-2 ml-3 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-    >
-      <span class="sr-only">Open sidebar</span>
-      <svg
-        class="w-6 h-6"
-        aria-hidden="true"
-        fill="currentColor"
-        viewBox="0 0 20 20"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          clip-rule="evenodd"
-          fill-rule="evenodd"
-          d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z"
-        ></path>
-      </svg>
-    </button>
+    <head>
+        <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+        <style></style>
+    </head>
+    <body class="p-0 m-0">
+        <div
+            id="sidebar-mask"
+            class="fixed hidden transition-opacity opacity-0 w-full h-full backdrop-blur bg-white/[.4] dark:bg-black/[.4]"
+        >
+        </div>
 
-    <aside
-      id="default-sidebar"
-      class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0"
-      aria-label="Sidebar"
-    >
-      <div
-        class="h-full px-3 py-4 overflow-y-auto backdrop-blur bg-white/[.4] dark:bg-black/[.2] border-r border-white/[.2]"
-      >
-        <ul class="space-y-2 font-medium">
-          <HeaderLink href="/" class="py-4">{SITE_TITLE}</HeaderLink>
-          <HeaderLink href="/blog">博客</HeaderLink>
-          <HeaderLink href="/about">关于</HeaderLink>
-          <HeaderLink href="/friends">友情链接</HeaderLink>
-          <HeaderLink href="https://github.com/jerrywossion" target="_blank">
-            GitHub
-          </HeaderLink>
-        </ul>
-      </div>
-    </aside>
+        <aside
+            id="sidebar"
+            class="fixed top-0 left-0 z-40 w-64 sm:w-64 h-screen transition-transform -translate-x-full sm:translate-x-0"
+            aria-label="Sidebar"
+        >
+            <div
+                class="h-full px-3 overflow-y-auto backdrop-blur bg-white/[.4] dark:bg-black/[.2] border-r border-white/[.2]"
+            >
+                <div class="flex h-10 flex-row-reverse">
+                    <button
+                        id="sidebar-close"
+                        aria-controls="sidebar"
+                        type="button"
+                        class="w-6 h-6 text-sm text-gray-500 rounded-lg self-center sm:hidden"
+                    >
+                        <span class="sr-only">关闭侧边栏</span>
+                        <svg
+                            aria-hidden="true"
+                            class="h-full"
+                            viewBox="0 0 16 16"
+                            version="1.1"
+                            data-view-component="true"
+                        >
+                            <path
+                                d="M3.72 3.72a.75.75 0 0 1 1.06 0L8 6.94l3.22-3.22a.749.749 0 0 1 1.275.326.749.749 0 0 1-.215.734L9.06 8l3.22 3.22a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215L8 9.06l-3.22 3.22a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L6.94 8 3.72 4.78a.75.75 0 0 1 0-1.06Z"
+                            ></path>
+                        </svg>
+                    </button>
+                </div>
+                <ul class="py-4 sm:py-0 space-y-2 font-medium">
+                    <HeaderLink href="/" class="py-4">{SITE_TITLE}</HeaderLink>
+                    <HeaderLink href="/blog">博客</HeaderLink>
+                    <HeaderLink href="/about">关于</HeaderLink>
+                    <HeaderLink href="/friends">友情链接</HeaderLink>
+                    <HeaderLink
+                        href="https://github.com/jerrywossion"
+                        target="_blank"
+                    >
+                        GitHub
+                    </HeaderLink>
+                </ul>
+            </div>
+        </aside>
 
-    <div class="p-4 sm:ml-64 min-h-screen flex flex-col">
-      <main class="mx-auto flex-1"><slot /></main>
-      <Footer />
-    </div>
-  </body>
+        <div class="overflow-clip min-h-screen flex flex-col">
+            <div
+                class="sm:hidden sticky top-0 flex items-center flex-0 bg-white/[.4] dark:bg-black/[.4] border-b border-white/[.2] backdrop-blur-2xl"
+            >
+                <button
+                    id="sidebar-toggle"
+                    aria-controls="sidebar"
+                    type="button"
+                    class="inline-flex w-10 h-10 items-center p-2 text-sm text-gray-500 rounded-lg sm:hidden"
+                >
+                    <span class="sr-only">打开侧边栏</span>
+                    <svg
+                        class="w-full h-full fill-none stroke-sky-600"
+                        viewBox="0 0 34 28"
+                        xmlns="http://www.w3.org/2000/svg"
+                    >
+                        <rect
+                            x="1"
+                            y="1"
+                            width="32"
+                            height="26"
+                            rx="3"
+                            stroke-width="2"></rect>
+                        <line x1="13" y1="2" x2="13" y2="26" stroke-width="2"
+                        ></line>
+                        <line
+                            x1="4.5"
+                            y1="5.5"
+                            x2="9.5"
+                            y2="5.5"
+                            stroke-linecap="round"></line>
+                        <line
+                            x1="4.5"
+                            y1="8.5"
+                            x2="9.5"
+                            y2="8.5"
+                            stroke-linecap="round"></line>
+                        <line
+                            x1="4.5"
+                            y1="11.5"
+                            x2="9.5"
+                            y2="11.5"
+                            stroke-linecap="round"></line>
+                    </svg>
+                </button>
+                <h1 class="flex-1 text-center place-self-center">
+                    {SITE_TITLE}
+                </h1>
+                <div class="w-10 h-10 p-2"></div>
+            </div>
+            <main class="flex-1 p-4 sm:ml-64"><slot /></main>
+            <Footer />
+        </div>
+
+        <script>
+            const sidebar = document.getElementById('sidebar')
+            const sidebarMask = document.getElementById('sidebar-mask')
+            const toggleIndicator = 'toggled'
+            const isToggled = sidebar.classList.contains(toggleIndicator)
+            const sidebarExpandClass = 'translate-x-0'
+            const sidebarCollapseClass = '-translate-x-full'
+
+            const toggleButton = document.getElementById('sidebar-toggle')
+            toggleButton.addEventListener('click', () => {
+                sidebar.classList.add(toggleIndicator)
+                sidebar.classList.remove(sidebarCollapseClass)
+                sidebar.classList.add(sidebarExpandClass)
+                sidebarMask.classList.remove('hidden')
+                sidebarMask.classList.remove('opacity-0')
+            })
+
+            const closeButton = document.getElementById('sidebar-close')
+            closeButton.addEventListener('click', () => {
+                sidebar.classList.remove(toggleIndicator)
+                sidebar.classList.remove(sidebarExpandClass)
+                sidebar.classList.add(sidebarCollapseClass)
+                const sidebarMaskRef = new WeakRef(sidebarMask)
+                sidebarMask.addEventListener('transitionend', (event) => {
+                    const sidebarMask = sidebarMaskRef.deref()
+                    if (sidebarMask) {
+                        sidebarMask.classList.add('hidden')
+                    }
+                })
+                sidebarMask.classList.add('opacity-0')
+            })
+        </script>
+    </body>
 </html>

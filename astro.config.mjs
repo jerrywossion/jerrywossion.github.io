@@ -10,6 +10,6 @@ export default defineConfig({
     base: '/',
     integrations: [mdx(), sitemap(), tailwind()],
     experimental: {
-      assets: true
-     }
+        assets: true,
+    },
 })
