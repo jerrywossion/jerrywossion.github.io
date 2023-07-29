@@ -1,6 +1,7 @@
 ---
+const { class: className } = Astro.props
 ---
 
-<div class="w-full h-[1px] rounded-full px-1">
+<div class:list={[className, 'w-full h-[1px] rounded-full px-1']}>
     <div class="bg-white/[.2] h-full w-full"></div>
 </div>
