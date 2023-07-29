@@ -4,7 +4,7 @@ const { url, imgUrl, title, description } = Astro.props
 
 <a
     href={url}
-    class="flex flex-row h-24 min-[500px]:h-32 items-center overflow-clip bg-white/[.3] border border-white/[.2] rounded-lg shadow min-[500px]:w-96 hover:border-white/[.5] dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700"
+    class="flex flex-row h-24 items-center overflow-clip rounded-lg shadow border border-white/[.2] hover:border-white/[.5] dark:hover:border-white/[.5] bg-white/[.3] dark:bg-black/[.2] hover:bg-white/[.4] hover:dark:bg-black/[.3] min-[500px]:h-32 min-[500px]:w-96"
 >
     <img
         class="object-cover h-24 min-[500px]:h-32 w-24 min-[500px]:w-32"
@@ -17,7 +17,7 @@ const { url, imgUrl, title, description } = Astro.props
         >
             {title}
         </h5>
-        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+        <p class="mb-3 font-normal text-gray-700 dark:text-white/[.6]">
             {description}
         </p>
     </div>

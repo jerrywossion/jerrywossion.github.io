@@ -1,0 +1,97 @@
+---
+import ThemeToggleItem from '../components/ThemeToggleItem.astro'
+
+const { class: className } = Astro.props
+---
+
+<div class="inline-flex items-center px-2 my-1 rounded-full bg-white/[.2]">
+    <ThemeToggleItem
+        radioId="lightThemeToggle"
+        title="开启浅色模式"
+        class="mr-2"
+        value="light"
+    >
+        <svg
+            id="lightThemeIcon"
+            xmlns="http://www.w3.org/2000/svg"
+            class="w-5 h-5 fill-gray-400 rounded-full"
+            viewBox="0 0 20 20"
+            aria-hidden="true"
+        >
+            <path
+                d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+            >
+            </path>
+        </svg>
+    </ThemeToggleItem>
+    <ThemeToggleItem
+        radioId="darkThemeToggle"
+        title="开启深色模式"
+        class=""
+        value="dark"
+    >
+        <svg
+            id="darkThemeIcon"
+            xmlns="http://www.w3.org/2000/svg"
+            class="w-5 h-5 fill-gray-400 rounded-full"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+            aria-hidden="true"
+        >
+            <path
+                d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"
+            >
+            </path>
+        </svg>
+    </ThemeToggleItem>
+</div>
+
+<script is:inline>
+    document.addEventListener(
+        'DOMContentLoaded',
+        function () {
+            function setTheme(theme) {
+                const lightIcon = document.getElementById('lightThemeIcon')
+                const darkIcon = document.getElementById('darkThemeIcon')
+                const icons = [lightIcon, darkIcon]
+                icons.forEach((icon) => {
+                    icon.classList.remove('fill-gray-400')
+                    icon.classList.remove('fill-white')
+                    icon.classList.remove('fill-black')
+                })
+                if (theme === 'light') {
+                    document.documentElement.classList.remove('dark')
+                    document.getElementById('lightThemeToggle').checked = true
+                    darkIcon.classList.add('fill-gray-400')
+                    lightIcon.classList.add('fill-black')
+                } else {
+                    document.documentElement.classList.add('dark')
+                    document.getElementById('darkThemeToggle').checked = true
+                    lightIcon.classList.add('fill-gray-400')
+                    darkIcon.classList.add('fill-white')
+                }
+                localStorage.theme = theme
+            }
+            const radios = document.getElementsByName('theme-toggle')
+            const theme = (() => {
+                if (typeof localStorage !== 'undefined' && localStorage.theme) {
+                    return localStorage.theme
+                }
+                if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                    return 'dark'
+                }
+                return 'light'
+            })()
+            setTheme(theme)
+            window.localStorage.setItem('theme', theme)
+            radios.forEach((radio) =>
+                radio.addEventListener('change', () => {
+                    setTheme(radio.value)
+                })
+            )
+        },
+        false
+    )
+</script>

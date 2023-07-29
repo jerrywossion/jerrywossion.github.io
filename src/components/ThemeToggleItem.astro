@@ -1,0 +1,31 @@
+---
+const { radioId, title, value, checked, class: className } = Astro.props
+---
+
+<label
+    title={title}
+    class:list={[className, 'flex relative items-center justify-center']}
+>
+    <slot />
+    {
+        checked ? (
+            <input
+                type="radio"
+                name="theme-toggle"
+                value={value}
+                aria-label={title}
+                class="absolute inset-0 z-[-1]"
+                checked
+            />
+        ) : (
+            <input
+                id={radioId}
+                type="radio"
+                name="theme-toggle"
+                value={value}
+                aria-label={title}
+                class="absolute opacity-0 inset-0 z-[-1]"
+            />
+        )
+    }
+</label>
