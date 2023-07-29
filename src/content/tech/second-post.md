@@ -3,7 +3,7 @@ title: 'Second post'
 description: 'Lorem ipsum dolor sit amet'
 pubDate: 'Jul 22 2022'
 updateDate: 'Jul 15 2022'
-tags: []
+tags: ['tag-b', 'tag-c']
 heroImage: '/placeholder-hero.jpg'
 ---
 
