@@ -11,7 +11,6 @@ const blogSchema = z.object({
         .string()
         .or(z.date())
         .transform((val) => new Date(val)),
-    image: z.string().optional(),
 })
 
 const tech = defineCollection({
