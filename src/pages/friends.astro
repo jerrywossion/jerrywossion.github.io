@@ -4,10 +4,14 @@ import FriendLink from '../components/FriendLink.astro'
 ---
 
 <MainLayout>
-    <FriendLink
-        url="https://redebug.com"
-        imgUrl="https://www.redebug.com/wp-content/uploads/2016/03/header.jpg"
-        title="REDEBUG"
-        description="Debug over and over again"
-    />
+    <section class="container mx-auto max-w-screen-md text-2xl">
+        <ul class="backdrop-blur mx-6 my-4 rounded-lg overflow-clip">
+            <FriendLink
+                url="https://redebug.com"
+                imgUrl="https://www.redebug.com/wp-content/uploads/2016/03/header.jpg"
+                title="REDEBUG"
+                description="Debug over and over again"
+            />
+        </ul>
+    </section>
 </MainLayout>

@@ -2,23 +2,25 @@
 const { url, imgUrl, title, description } = Astro.props
 ---
 
-<a
-    href={url}
-    class="flex flex-row h-24 items-center overflow-clip rounded-lg shadow border border-white/[.2] hover:border-white/[.5] dark:hover:border-white/[.5] bg-white/[.7] dark:bg-black/[.2] hover:bg-white/[.8] hover:dark:bg-black/[.3] min-[500px]:h-32 min-[500px]:w-96"
->
-    <img
-        class="object-cover h-24 min-[500px]:h-32 w-24 min-[500px]:w-32"
-        src={imgUrl}
-        alt=""
-    />
-    <div class="flex-1 flex-col pl-4 justify-between leading-normal">
-        <h5
-            class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
-        >
-            {title}
-        </h5>
-        <p class="mb-3 font-normal text-gray-700 dark:text-white/[.6]">
-            {description}
-        </p>
-    </div>
-</a>
+<li>
+    <a
+        href={url}
+        class="flex flex-row h-24 items-center overflow-clip rounded-lg shadow border border-white/[.2] hover:border-white/[.9] dark:hover:border-white/[.5] bg-white/[.8] dark:bg-black/[.2] hover:bg-white hover:dark:bg-black/[.3] min-[500px]:h-32"
+    >
+        <img
+            class="object-cover h-24 min-[500px]:h-32 w-24 min-[500px]:w-32 bg-slate-200"
+            src={imgUrl}
+            alt=""
+        />
+        <div class="flex-1 flex-col pl-4 justify-between leading-normal">
+            <h5
+                class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
+            >
+                {title}
+            </h5>
+            <p class="mb-3 font-normal text-gray-700 dark:text-white/[.6]">
+                {description}
+            </p>
+        </div>
+    </a>
+</li>
