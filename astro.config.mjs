@@ -12,4 +12,8 @@ export default defineConfig({
     experimental: {
         assets: true,
     },
+    markdown: {
+        remarkPlugins: ['remark-math'],
+        rehypePlugins: [['rehype-katex', {}]],
+    },
 })

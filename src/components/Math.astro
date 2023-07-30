@@ -1,0 +1,17 @@
+---
+import katex from 'katex'
+import '../styles/katex.min.css'
+
+const { formula, class: className } = Astro.props
+const html = katex.renderToString(formula, { throwOnError: false })
+---
+
+<span class:list={[className]} set:html={html} />
+<style is:global>
+    .katex {
+        font-size: 1em;
+    }
+    .mathnormal {
+        margin-right: 3px;
+    }
+</style>

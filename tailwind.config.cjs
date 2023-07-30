@@ -20,6 +20,12 @@ module.exports = {
                             fontWeight: 'regular',
                             fontStyle: 'regular',
                         },
+                        'blockquote p:first-of-type::before': {
+                            content: 'none',
+                        },
+                        'blockquote p:first-of-type::after': {
+                            content: 'none',
+                        },
                         a: {
                             textDecoration: 'none',
                             borderBottom: '1px solid #7dd3fc',
