@@ -27,6 +27,9 @@ module.exports = {
                         'a:hover': {
                             borderBottom: '2px solid #7dd3fc',
                         },
+                        img: {
+                            margin: 'auto',
+                        },
                     },
                 },
                 lg: {
