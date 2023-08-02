@@ -17,7 +17,7 @@ const { Content } = await post.render()
 ---
 
 <MainLayout>
-    <BlogPost {...post.data}>
+    <BlogPost kind="essay" {...post.data}>
         <Content />
     </BlogPost>
 </MainLayout>

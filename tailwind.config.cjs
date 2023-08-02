@@ -49,6 +49,10 @@ module.exports = {
                                 marginTop: em(12, 18),
                                 marginBottom: em(12, 18),
                             },
+                            pre: {
+                                marginTop: em(10, 18),
+                                marginBottom: em(10, 18),
+                            },
                             h1: {
                                 fontSize: em(26, 18),
                                 marginTop: em(16, 18),

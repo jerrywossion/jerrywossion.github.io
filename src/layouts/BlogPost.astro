@@ -2,21 +2,26 @@
 import FormattedDate from '../components/FormattedDate.astro'
 import Divider from '../components/Divider.astro'
 
-const { title, pubDate, updatedDate } = Astro.props
+const { kind, title, pubDate, updatedDate, tags } = Astro.props
 ---
 
 <article
     class="prose lg:prose-lg dark:prose-invert container mx-auto px-14 py-10 max-w-screen-lg backdrop-blur bg-[#FFFFF4] rounded-lg overflow-clip"
 >
-    <h1 class="text-2xl">{title}</h1>
-    <FormattedDate date={pubDate} />
-    {
-        updatedDate && (
-            <div class="last-updated-on">
-                Last updated on <FormattedDate date={updatedDate} />
-            </div>
-        )
-    }
+    <h1 class="text-2xl text-center">{title}</h1>
+    <div class="text-center">
+        <FormattedDate date={pubDate} />
+        {
+            updatedDate && (
+                <div>
+                    Last updated on <FormattedDate date={updatedDate} />
+                </div>
+            )
+        }
+    </div>
+    <div class="flex">
+        {tags.map((tag) => <a href={`/${kind}/${tag}`}>{tag}</a>)}
+    </div>
 
     <Divider class="my-4" />
 
