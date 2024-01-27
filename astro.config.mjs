@@ -9,9 +9,6 @@ export default defineConfig({
     site: 'https://jerrywossion.github.io',
     base: '/',
     integrations: [mdx(), sitemap(), tailwind()],
-    experimental: {
-        assets: true,
-    },
     markdown: {
         remarkPlugins: ['remark-math'],
         rehypePlugins: [['rehype-katex', {}]],
