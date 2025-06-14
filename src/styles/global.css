@@ -1,0 +1,102 @@
+@import "tailwindcss";
+
+body {
+  font-size: 18px;
+}
+
+article h1 {
+  @apply text-4xl font-semibold;
+  @apply pt-6 pb-3;
+}
+
+article h2 {
+  @apply text-3xl font-semibold;
+  @apply pt-4 pb-2;
+}
+
+article h3 {
+  @apply text-2xl font-semibold;
+  @apply pt-3 pb-1;
+}
+
+article h4 {
+  @apply text-xl font-semibold;
+  @apply pt-2.5 pb-0.5;
+}
+
+article h1 + h2,
+article h1 + h3,
+article h1 + h4,
+article h2 + h3,
+article h2 + h4,
+article h3 + h4 {
+  @apply pt-0;
+}
+
+article img,
+article pre {
+  @apply rounded-2xl;
+  @apply my-4;
+}
+
+article blockquote {
+  @apply p-4;
+}
+
+article code {
+  @apply font-mono;
+}
+
+article p code {
+  @apply bg-sky-100 px-1 py-[1px] rounded-lg;
+}
+
+article pre {
+  @apply p-4;
+  @apply border-1 border-sky-200;
+}
+
+article blockquote {
+  @apply my-4;
+  @apply bg-sky-50 border-l-8 border-sky-200;
+}
+
+article table {
+  @apply my-4;
+}
+
+article thead {
+  @apply bg-sky-100;
+}
+
+article th {
+  @apply border-t-[1px] border-sky-200;
+}
+article th,
+article td {
+  @apply px-4 py-1;
+  @apply border-l-[1px] border-b-[1px] last:border-r-[1px] border-sky-200;
+}
+
+article ul li {
+  @apply list-inside list-disc;
+}
+
+article ol {
+  @apply pl-4;
+}
+article ol li {
+  @apply list-decimal;
+}
+
+article a {
+  @apply text-sky-500;
+}
+
+article a:visited {
+  @apply text-sky-800;
+}
+
+.footnote {
+  @apply text-sm;
+}

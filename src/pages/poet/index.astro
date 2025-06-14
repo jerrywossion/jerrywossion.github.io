@@ -1,0 +1,35 @@
+---
+import { getCollection } from "astro:content";
+import FormattedDate from "../../components/FormattedDate.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import IndexHeader from "../../components/IndexHeader.astro";
+
+const posts = (await getCollection("poetPosts")).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+---
+
+<BaseLayout>
+  <IndexHeader compact={true} curRoute="/poet" />
+  <main class="container m-auto max-w-3xl px-4">
+    <section>
+      <ul>
+        {
+          posts.map((post) => (
+            <li class="first:pt-4 pb-4 first:mt-6 mb-6 border-b-neutral-100 border-b">
+              <a
+                href={`/poet/${post.id}/`}
+                class="flex items-baseline space-x-2 hover:text-sky-600"
+              >
+                <h4 class="grow text-lg">{post.data.title}</h4>
+                <p class="date text-sm shrink-0">
+                  <FormattedDate date={post.data.pubDate} />
+                </p>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+  </main>
+</BaseLayout>

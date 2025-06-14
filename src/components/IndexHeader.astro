@@ -1,0 +1,53 @@
+---
+import { SITE_TITLE } from "../consts";
+
+interface Props {
+  compact: boolean;
+  curRoute?: string;
+}
+
+const { compact, curRoute } = Astro.props;
+---
+
+<header class="w-full">
+  <nav class="flex flex-col items-center p-10 space-y-4">
+    {
+      !compact && (
+        <a href="/" class="text-5xl font-serif font-semibold">
+          {SITE_TITLE}
+        </a>
+      )
+    }
+    <div class="flex relative space-x-10">
+      <div
+        class="absolute z-10 w-full h-full bg-[oklch(0.7716_0.028_262.04_/_0.15)] backdrop-filter backdrop-blur-sm bg-opacity-10 rounded-full border border-[oklch(0.7716_0.028_262.04_/_0.05)]"
+      >
+      </div>
+      <div class="flex items-center space-x-1 px-[5px] py-[4px] z-20">
+        {
+          compact && (
+            <a href="/">
+              <img src="/favicon.svg" alt={SITE_TITLE} class="w-6 h-6 mr-2" />
+            </a>
+            <div class="w-[2px] h-4 bg-[oklch(0.7716_0.028_262.04_/_0.5)] rounded-full"></div>
+          )
+        }
+        <a
+          href="/nerd"
+          class=`block text-sky-500 ${curRoute == '/nerd' && 'bg-sky-500/10'} hover:bg-sky-500/10 rounded-full px-2 py-[2px]`
+          >技術</a
+        >
+        <a
+          href="/poet"
+          class=`block text-pink-500 ${curRoute == '/poet' && 'bg-pink-500/10'} hover:bg-pink-500/10 rounded-full px-2 py-[2px]`
+          >隨筆</a
+        >
+        <a
+          href="/apps"
+          class=`block text-purple-500 ${curRoute == '/apps' && 'bg-purple-500/10'} hover:bg-purple-500/10 rounded-full px-2 py-[2px]`
+          >Apps</a
+        >
+      </div>
+    </div>
+  </nav>
+</header>
