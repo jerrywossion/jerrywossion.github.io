@@ -39,4 +39,12 @@ const poetPosts = defineCollection({
   schema: postSchema,
 });
 
-export const collections = { nerdPosts, poetPosts };
+const microPosts = defineCollection({
+  loader: glob({ base: "./src/content/murmur", pattern: "**/*.{md,mdx}" }),
+  schema: z.object({
+    pubDate: z.coerce.date(),
+    modDate: z.coerce.date(),
+  }),
+});
+
+export const collections = { nerdPosts, poetPosts, microPosts };

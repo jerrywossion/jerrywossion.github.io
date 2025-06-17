@@ -1,0 +1,46 @@
+---
+import { getCollection, render } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import IndexHeader from "../../components/IndexHeader.astro";
+import FormattedDate from "../../components/FormattedDate.astro";
+
+const posts = (await getCollection("microPosts")).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+
+const postContents = await Promise.all(
+  posts.map(async (post) => {
+    const { Content } = await render(post);
+    return { post, content: Content };
+  })
+);
+---
+
+<BaseLayout>
+  <IndexHeader compact={true} curRoute="/murmur" />
+  <main class="container m-auto max-w-3xl px-4 font-serif">
+    <section>
+      <ul>
+        {
+          postContents.map((postData) => (
+            <li class="py-4 mb-10 group">
+              <div class="text-sm text-neutral-500 mb-4">
+                <FormattedDate date={postData.post.data.pubDate} />
+              </div>
+              <div class="text-xl/9">
+                <postData.content />
+              </div>
+              {postData.post.data.pubDate.getTime() !==
+                postData.post.data.modDate.getTime() && (
+                <div class="text-xs text-neutral-500 mt-2">
+                  上次編輯：
+                  <FormattedDate date={postData.post.data.modDate} />
+                </div>
+              )}
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+  </main>
+</BaseLayout>

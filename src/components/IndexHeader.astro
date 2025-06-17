@@ -43,6 +43,11 @@ const { compact, curRoute } = Astro.props;
           >隨筆</a
         >
         <a
+          href="/murmur"
+          class=`block text-indigo-500 ${curRoute == '/murmur' && 'bg-indigo-500/10'} hover:bg-indigo-500/10 rounded-full px-2 py-[2px]`
+          >雜言</a
+        >
+        <a
           href="/apps"
           class=`block text-purple-500 ${curRoute == '/apps' && 'bg-purple-500/10'} hover:bg-purple-500/10 rounded-full px-2 py-[2px]`
           >Apps</a

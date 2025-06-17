@@ -1,7 +1,12 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Serif+TC&display=swap");
 @import "tailwindcss";
 
+@theme {
+  --font-serif: "Noto Serif TC";
+}
+
 body {
-  font-size: 18px;
+  font-size: 20px;
 }
 
 article h1 {
