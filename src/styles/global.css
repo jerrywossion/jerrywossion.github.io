@@ -3,6 +3,7 @@
 
 @theme {
   --font-serif: "Noto Serif TC";
+  --font-kaiti: "DFKai-SB", "BiauKai", "STKaiti", "KaiTi";
 }
 
 body {
@@ -64,6 +65,13 @@ article pre {
 article blockquote {
   @apply my-4;
   @apply bg-sky-50 border-l-8 border-sky-200;
+}
+
+article.murmur blockquote {
+  @apply my-4;
+  @apply font-kaiti;
+  font-size: 1.1em;
+  @apply border-l-10 border-indigo-100 bg-transparent;
 }
 
 article table {

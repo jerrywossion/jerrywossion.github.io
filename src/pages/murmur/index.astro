@@ -27,7 +27,7 @@ const postContents = await Promise.all(
               <div class="text-sm text-neutral-500 mb-4">
                 <FormattedDate date={postData.post.data.pubDate} />
               </div>
-              <article class="pt-8">
+              <article class="murmur pt-8">
                 <postData.content />
               </article>
               {postData.post.data.pubDate.getTime() !==
