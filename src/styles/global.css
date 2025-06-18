@@ -3,7 +3,7 @@
 
 @theme {
   --font-serif: "Noto Serif TC";
-  --font-kaiti: "DFKai-SB", "BiauKai", "STKaiti", "KaiTi";
+  --font-kaiti: "DFKai-SB", "BiauKai", "STKaiti", "KaiTi", /* fallback for iOS*/ "Noto Serif TC";
 }
 
 body {
