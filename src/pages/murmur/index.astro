@@ -23,11 +23,11 @@ const postContents = await Promise.all(
       <ul>
         {
           postContents.map((postData) => (
-            <li class="py-4 mb-10 group">
-              <div class="text-sm text-neutral-500 mb-4">
+            <li class="mb-20 group">
+              <div class="text-sm text-neutral-500">
                 <FormattedDate date={postData.post.data.pubDate} />
               </div>
-              <article class="murmur pt-8">
+              <article class="murmur mt-8">
                 <postData.content />
               </article>
               {postData.post.data.pubDate.getTime() !==
