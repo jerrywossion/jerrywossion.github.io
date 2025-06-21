@@ -1,10 +1,7 @@
 import { glob } from "astro/loaders";
 import { defineCollection, z } from "astro:content";
+import { PostKind } from "./consts";
 
-enum PostKind {
-  NERD = "nerd",
-  POET = "poet",
-}
 const PostKindEnums = [PostKind.NERD, PostKind.POET] as const;
 
 enum Language {

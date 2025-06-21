@@ -3,3 +3,7 @@
 
 export const SITE_TITLE = "西風之眠";
 export const SITE_DESCRIPTION = "秋水時至 百川灌河";
+export enum PostKind {
+  NERD = "nerd",
+  POET = "poet",
+}

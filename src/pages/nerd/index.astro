@@ -7,8 +7,6 @@ import IndexHeader from "../../components/IndexHeader.astro";
 const posts = (await getCollection("nerdPosts")).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 );
-
-console.log(posts.map((post) => post.id));
 ---
 
 <BaseLayout>

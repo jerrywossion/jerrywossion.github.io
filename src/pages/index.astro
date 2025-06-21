@@ -1,8 +1,61 @@
 ---
+import { getCollection, render } from "astro:content";
+import FormattedDate from "../components/FormattedDate.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import IndexHeader from "../components/IndexHeader.astro";
+import { PostKind } from "../consts";
+
+const nerdPosts = await getCollection("nerdPosts");
+const poetPosts = await getCollection("poetPosts");
+const posts = [...nerdPosts, ...poetPosts].sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+const latestMurmur = (await getCollection("microPosts")).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+)[0];
+const { Content: MurmurContent } = await render(latestMurmur);
 ---
 
 <BaseLayout>
-  <IndexHeader compact={false} />
+  <IndexHeader compact={false} curRoute="/nerd" />
+  <main class="home container m-auto max-w-3xl px-4">
+    <section
+      class="border-[1px] border-indigo-100 rounded-3xl px-6 py-4 hover:bg-indigo-50 transition-all ease-in-out duration-200"
+    >
+      <a href="/murmur">
+        <article class="murmur font-serif">
+          <MurmurContent />
+          <div class="text-sm text-neutral-500">
+            <FormattedDate date={latestMurmur.data.pubDate} />
+          </div>
+        </article>
+      </a>
+    </section>
+    <section class="mt-10">
+      <h1 class="text-3xl font-bold">文章</h1>
+      <ul>
+        {
+          posts.map((post) => (
+            <li
+              class:list={[
+                "pb-4 first:pt-6 mb-6 border-b-neutral-100 border-b",
+                { "text-sky-500": post.data.kind === PostKind.NERD },
+                { "text-pink-500": post.data.kind === PostKind.POET },
+              ]}
+            >
+              <a
+                href={`/nerd/${post.id}/`}
+                class="flex items-baseline space-x-2 hover:text-sky-600"
+              >
+                <h4 class="grow text-lg">{post.data.title}</h4>
+                <p class="date text-sm shrink-0">
+                  <FormattedDate date={post.data.pubDate} />
+                </p>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+  </main>
 </BaseLayout>

@@ -3,6 +3,7 @@ import { type CollectionEntry, getCollection } from "astro:content";
 import { render } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import FormattedDate from "../../components/FormattedDate.astro";
+import { SITE_TITLE } from "../../consts";
 
 export async function getStaticPaths() {
   const posts = await getCollection("nerdPosts");
@@ -19,10 +20,10 @@ const { Content } = await render(post);
 
 <BaseLayout>
   <main class="container m-auto max-w-3xl px-4">
-    <header>
-      <a
-        href="/nerd"
-        class="inline-flex items-center px-4 py-1 mt-4 mb-6 rounded-full border-sky-100 bg-sky-50 hover:bg-sky-200 text-sky-500"
+    <header
+      class="inline-flex space-x-4 items-center px-2 py-2 mt-4 mb-6 rounded-full border-sky-100 bg-sky-50 text-sky-500"
+    >
+      <a href="/nerd" class="inline-flex items-center hover:font-semibold"
         ><svg
           xmlns="http://www.w3.org/2000/svg"
           width="16"
@@ -37,6 +38,17 @@ const { Content } = await render(post);
           ></path>
         </svg>技術</a
       >
+      <div
+        class="w-[2px] h-4 bg-[oklch(0.7716_0.028_262.04_/_0.5)] rounded-full"
+      >
+      </div>
+      <a href="/">
+        <img
+          src="/favicon.svg"
+          alt={SITE_TITLE}
+          class="w-6 h-6 mr-2 border-2 rounded-full border-transparent hover:border-cyan-500"
+        />
+      </a>
     </header>
     <h1 class="text-4xl font-semibold mb-4">{post.data.title}</h1>
     <div class="my-4">
