@@ -34,17 +34,13 @@ Layer Blend node 的 blend 具体实现逻辑在 `MaterialExpressionLandscapeLay
 
 ## Pass 1
 
-遍历所有的 LB Weight-Blend 和 LB Heigh-Blend layers，计算每个 $layer_i$ 的 $weight$ 并放到 $weights[i]$ 数组中，同时计算所有的 weight 之和 $weightSum$。
-
-对于 LB Weight-Blend layer，直接从 weight map 中取值。
-
-对于 LB Heigh-Blend layer，先从 weight map 中取出值 $w$，然后获取 height 的输入值 $h$，然后按下列公式计算： $weight=clamp(lerp(-1.f, 1.f, w) + h, 0.0001, 1.f)$
+遍历所有的 LB Weight-Blend 和 LB Heigh-Blend layers，计算每个 $layer_i$ 的 $weight$ 并放到 $weights[i]$ 数组中，同时将这些 weight 值累加并最终得到所有这两种类型的 layer 的 weight 值之和 $weightSum$。两种类型 layer 的取值计算逻辑为：
+- 对于 LB Weight-Blend layer，直接从 weight map 中取值。
+- 对于 LB Heigh-Blend layer，依次从 weight map 中取值 $w$，从 height 输入中取出值 $h$，然后按下列公式计算： $weight=clamp(lerp(-1.f, 1.f, w) + h, 0.0001, 1.f)$
 
 ## Pass 2
 
-开始执行 blend 操作，设最终的输出颜色为 $output$。
-
-遍历所有的 LB Weight-Blend 和 LB Heigh-Blend layers，对每个 $layer_i$：
+开始执行 blend 操作，设最终的输出颜色为 $output$，遍历所有的 LB Weight-Blend 和 LB Heigh-Blend layers，对每个 $layer_i$：
 - 只要存在至少一个 LB Heigh-Blend layer，则需要对 weight 值做归一化处理： $output = output + texture_i * weight[i] / weightSum$
 - 否则： $output = output + texture_i * weight[i]$
   

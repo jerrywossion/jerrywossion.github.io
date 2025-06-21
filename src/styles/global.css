@@ -3,6 +3,7 @@
 
 @theme {
   --font-serif: "Noto Serif TC";
+  --text-maincolor: rgb(29, 29, 31);
 }
 
 body {
@@ -10,7 +11,9 @@ body {
 }
 
 article {
-  @apply text-lg md:text-xl;
+  @apply md:text-lg;
+  @apply text-(--text-maincolor);
+  @apply leading-relaxed;
 }
 
 article h1 {
@@ -79,6 +82,16 @@ article td {
 
 article ul li {
   @apply list-inside list-disc;
+}
+
+article ul ul {
+  margin-block: 0;
+  @apply pl-8;
+}
+
+article ul ul ul {
+  margin-block: 0;
+  @apply pl-16;
 }
 
 article ol {
