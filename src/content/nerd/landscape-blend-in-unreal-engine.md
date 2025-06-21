@@ -24,7 +24,8 @@ Layer Blend node 中的各个 layer，在 Editor 的 Landscape Paint panel 中�
 这就是文档中所说的“绘制一个 Weight-Blended layer 时会降低所有其他 Weight-Blended layer 的 weight 值”。
 具体的处理和计算逻辑源码在 `FLandscapeEditDataInterface::SetAlphaData` 函数中。
 
-![paint](https://github.com/user-attachments/assets/38b1307b-d1a8-4f13-868e-2feac04542ee)
+![paint](https://github.com/user-attachments/assets/fc1156e7-9522-45ff-bbaa-968193f58eb0)
+
 
 如果减少一个 Weight-Based layer 的 weight 值，则会相应地提升其他 Weight-Based layer 的 weight 值，但这个行为比较古怪，如果一个 layer 的旧 weight 值为 255，因为其它 layer 的 weight 值是 0，Editor 会尝试选择一个 layer 来提升其 weight 值，如果没有找到一个 layer，则没法降低当前 layer 的 weight 值，操作起来像是没反应一样。同时即使能找到一个 layer，这个查找的规则也比较反直觉，具体规则还没有理清。UE 文档也推荐只增量绘制。
 
@@ -48,5 +49,6 @@ Layer Blend node 的 blend 具体实现逻辑在 `MaterialExpressionLandscapeLay
 
 上两个 pass 都忽略了 LB Alpha-Blend layer，pass 3 则只遍历所有的 LB Alpha-Blend layer，按照顺序，依次执行该计算公式： $output = lerp(output, texture_i, weight_i)$
 
-![blend](https://github.com/user-attachments/assets/2784d3f1-5438-4c4f-ba67-c123baea6ac7)
+![blend](https://github.com/user-attachments/assets/b9690208-8881-4c2e-ba8c-25ad6bd03755)
+
 
