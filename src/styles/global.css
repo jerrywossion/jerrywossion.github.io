@@ -119,6 +119,10 @@ article ol {
   margin-block: 1lh;
 }
 
+p code {
+  @apply break-all;
+}
+
 .home article p:first-child {
   margin-top: 0;
 }
