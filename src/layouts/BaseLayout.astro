@@ -13,16 +13,17 @@ const { title, description, language } = Astro.props;
 ---
 
 <!doctype html>
-<html lang={language ?? "zh"}>
+<html
+  lang={language ?? "zh"}
+  class="bg-[url('/white_paper.jpg')] bg-[length:400px_400px]"
+>
   <head>
     <BaseHead
       title={title ?? SITE_TITLE}
       description={description ?? SITE_DESCRIPTION}
     />
   </head>
-  <body
-    class="min-h-dvh flex flex-col bg-[url('/white_paper.jpg')] bg-[length:400px_400px]"
-  >
+  <body class="min-h-dvh flex flex-col">
     <slot />
     <div class="grow">&nbsp;</div>
     <Footer />
