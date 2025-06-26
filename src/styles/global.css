@@ -6,10 +6,6 @@
   --text-maincolor: rgb(29, 29, 31);
 }
 
-body {
-  /* font-size: 20px; */
-}
-
 article {
   @apply md:text-lg;
   @apply text-(--text-maincolor);
