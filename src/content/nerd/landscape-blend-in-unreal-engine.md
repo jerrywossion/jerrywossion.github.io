@@ -2,8 +2,8 @@
 id: 5c0d7f94-6e47-41de-a53b-1750a5bb9750
 title: Layer Blend in Unreal Engine
 description: Understanding blend modes of Layer Blend node in Landscape Material, and Layer Info Object kinds in landscape painting.
-pubDate: Fri Jun 20 23:35:26 CST 2025
-modDate: Fri Jun 20 23:35:26 CST 2025
+pubDate: 2025-06-20T23:35:26+08:00
+modDate: 2025-06-20T23:35:26+08:00
 kind: nerd
 tags: [Unreal Engine 5]
 language: zh-Hans
